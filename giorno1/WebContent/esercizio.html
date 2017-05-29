@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Esercizio</title>
+</head>
+<body>
+	<button onclick="segnaNumero()">Clicca</button>
+	<ul id="elenco">
+	</ul>
+	<script>
+		var c = 0;
+		function segnaNumero() {
+			var str = '<li>Hai cliccato il pulsante ' + (++c) + ' volte</li>';
+			document.getElementById('elenco').innerHTML += str;
+		}
+	</script>
+</body>
+</html>

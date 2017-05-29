@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Interazione con il DOM</title>
+</head>
+<body>
+<h1>Interazione con il DOM</h1>
+<p id="paragrafo1">Parleremo di interazione di JS con il DOM</p>
+<button onclick="x(event);">Cliccami</button>
+<script>
+	var y = 100;
+	function x(arg){
+		console.log('mi hai cliccato!');
+		console.log(arg);
+		 // window.document è il DOM
+		 var p = document.getElementById('paragrafo1');
+		 p.innerHTML = 'Sei <u id="sotto">passato</u> da jS!!';
+		 console.log(p);
+		 
+		 var s = document.getElementById('sotto');
+		 s.innerHTML = 'modificato!!!!';
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	<div>
+		<label>Nome: </label>
+		<span id="nome"></span>
+	</div>
+	<div>
+		<label>Cognome: </label>
+		<span id="cognome"></span>
+	</div>
+	<div>
+		<label>Indirizzo: </label>
+		<span id="via"></span> n. <span id="civico"></span>, <span id="cap"></span> <span id="citta"></span>
+	</div>
+</div>
+<div>
+	<button id="indietro">&lt;</button>
+	<button id="avanti">&gt;</button>
+</div>
+<script>
+	var persone = [];
+	persone.push({
+		nome: 'Mario',
+		cognome: 'Rossi',
+		indirizzo: {
+			via: 'via Roma',
+			civico: 1,
+			cap: '00100',
+			citta: 'Roma'
+		}
+	});
+	persone.push({
+		nome: 'Anna',
+		cognome: 'Bianchi',
+		indirizzo: {
+			via: 'via Colombo',
+			civico: 10,
+			cap: '20100',
+			citta: 'Milano'
+		}
+	});	
+	persone.push({
+		nome: 'Luisa',
+		cognome: 'Verdi',
+		indirizzo: {
+			via: 'via Dante',
+			civico: 21,
+			cap: '24100',
+			citta: 'Bergamo'
+		}
+	});	
+	document.getElementById('indietro').onclick = function () {
+		persone.push(persone.shift());
+		displayPersona();
+	}
+	document.getElementById('avanti').onclick = function () {
+		persone.unshift(persone.pop());
+		displayPersona();
+	}
+	function displayPersona() {
+		if (persone[0]) {
+			Object.getOwnPropertyNames(persone[0]).forEach(function(v){
+				var e = document.getElementById(v);
+				if (e)
+					e.innerHTML = persone[0][v];
+			});
+		}
+	}
+	displayPersona();
+</script>
+</body>
+</html>

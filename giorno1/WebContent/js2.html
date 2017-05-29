@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Scope</title>
+</head>
+<body>
+<script>
+	// scope delle variabili
+	
+	var a = 10;
+	var b = 30;
+	
+	// definisco la funzione
+	function funzione(){
+		var b = 20;
+		console.log('nella funzione => ' + a);
+		console.log('nella funzione => ' + b);
+		console.log('nella funzione => ' + this.b);
+		if(true) {
+			var d = 40;
+			console.log('dentro if => ' + d);
+		}
+		console.log('fuori if => ' + d);
+	}
+	
+	// chiamo la funzione
+	funzione();
+	console.log('fuori dalla funzione => ' + a);
+	console.log('fuori dalla funzione => ' + b);
+	
+	
+</script>
+</body>
+</html>

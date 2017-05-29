@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collezioni e oggetti</title>
+</head>
+<body>
+	<button id="btn">Clicca</button>
+	<script>
+		document.getElementById('btn').onclick = function() {
+			// inizializzazione
+			var arr = [];
+			var arr2 = [1, 5, 10.6, 100];
+			var arr3 = new Array();
+			
+			// accesso
+			console.log(arr2[1]); // accedo al II elemento
+			
+			// scrittura
+			arr[5] = 'ciao';
+			
+			console.log(arr);
+			
+			// membri di Array
+			console.log(arr.length);
+		
+			// lavoro alla fine dell'array
+			arr.push(20);
+			console.log(arr.pop());
+			
+			// lavoro all'inizio dell'array
+			arr.unshift(30);
+			console.log(arr[0]);
+			console.log(arr.shift());
+			
+			
+			// inverte
+			arr2.reverse();
+			
+			// loop sull'array
+			arr.push('buongiorno');
+			arr.push('buonasera');
+			arr.forEach(function(valore, indice){
+				console.log(indice + ' => ' + valore);
+			});
+			
+			var arrB = arr.filter(function(valore, indice){
+				return valore.startsWith('b');
+			});
+			console.log(arrB);
+			
+			// oggetti
+			//Stringhe
+			var testo = 'ciao';
+			console.log(testo.legth);
+			testo = testo.substring(1, 4);
+			console.log(testo.endsWith('x'));
+			console.log(testo.toUpperCase());
+			
+			var str = 'a#b#c#d';
+			console.log(str.split('#'));
+			console.log(arr.join('§'));
+			
+			// Date
+			var adesso = new Date();
+			var america = new Date('1492-08-10');
+			console.log(america);
+			
+			// oggetti generici
+			//inizializzazione
+			var obj = {};
+			var obj2 = new Object();
+			
+			// proprietà
+			var persona = {};
+			persona.nome = 'Andrea';
+			persona.cognome = 'Colleoni';
+			
+			console.log(persona);
+			
+			var persona2 = {
+				nome: 'Mario',
+				cognome: 'Rossi'
+			};
+			
+			console.log(persona2);
+			
+			persona2.numeroScarpe = 44;
+			
+			persona.indirizzo = {
+				via: 'Roma',
+				civico: 10,
+				cap: '20100',
+				citta: 'Milano'
+			};
+			console.log(persona);
+			
+			// ispezione degli oggetti
+			// verfica di properità
+			if (!persona2.hasOwnProperty('numeroScarpe')) {
+				console.log('Questa persona non ha le scarpe');
+			}
+		}
+	</script>
+</body>
+</html>

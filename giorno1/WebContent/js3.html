@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Funzioni</title>
+</head>
+<body>
+<script>
+	// dichiarazione
+	function x(arg){
+		var a;
+		console.log('dentro la funzione => ' + arg);
+		console.log('valore di a => ' + a);
+		return 'ciao';
+	}
+	
+	// call
+	x();
+	
+	x(10, 'ciao', 'pippo', 1000);
+	
+	console.log(x('testo'));
+	// --------------
+	
+	var y = function(arg) {
+		console.log('sono la funzione y');
+		console.log(arg);
+		// call
+		arg();
+	};	
+	
+	var z = function() {
+		console.log('sono la funzione z');
+	};	
+	
+	y(z);
+	
+	// closure
+	y(function() {
+		console.log('sono la funzione ANONIMA');
+	});
+
+	var alert = function(arg) {
+		console.log(arg);
+	}
+	alert('ciao');
+</script>
+</body>
+</html>

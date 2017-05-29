@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sintassi di base</title>
+</head>
+<body>
+<script>
+	// alert('ciao mondo!');
+	
+	testo = 'ciao';
+	
+	console.log(testo);
+	
+	testo = 100.5;
+	
+	console.log(testo);
+	// operatori
+	
+	// matematici: +, -, *, /, %
+	//             ++, --
+	
+	// logici: &, &&, |, ||, !
+	
+	// confronto: >, <, >=, <=
+	//			  ==, ===, !=, !==
+	
+	// assegnazione: =
+		
+	a = 10;
+	b = '10';
+	c = 10;
+	
+	console.log(a == b); // true
+	console.log(a === b); // false
+	console.log(a === c); // true
+	
+	// controllo di flusso
+	if(a == b) {
+		console.log('eseguito solo se la condizione è vera');
+	} else if (a === b) {
+		//
+	} else {
+		//
+	}
+	
+	val = 'x';
+	switch(val) {
+	case 'a':
+		//
+		break;
+	case 'b':
+		//
+		break;
+	case 'x':
+		//
+		break;
+	default:
+		//
+		break;
+	}
+	
+	// cicli
+	for(i=0; i < 10; i++) {
+		console.log(i);
+	}
+	
+	condizione = true;
+	while(condizione){
+		console.log('nel ciclo');
+		condizione = false;
+	}
+	
+	do {
+		console.log('nel ciclo');
+	} while(condizione);
+	
+</script>	
+</body>
+</html>
