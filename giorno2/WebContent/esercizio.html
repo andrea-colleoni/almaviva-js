@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Esercizio jQuery</title>
+<style>
+	.obbligatorio {
+		border: 2px solid black;
+	}
+	.nonValido {
+		background-color: #FFDDDD;
+	}
+	label {
+		width: 250px;
+		display: inline-block;
+	}
+	form div {
+		margin-top: 2px;
+		margin-botton: 2px;
+	}
+</style>
+</head>
+<body>
+<h2>Nuovo libro</h2>
+<form action="">
+	<div>
+		<label>Titolo</label>
+		<input type="text" id="txtTitolo" name="titolo" class="obbligatorio"
+			data-messaggio-errore="Il titolo è obbligatorio" />
+	</div>
+	<div>
+		<label>Autore</label>
+		<input type="text" id="txtAutore" name="autore"
+			data-messaggio-errore="L'autore è obbligatorio" />
+	</div>	
+	<div>
+		<label>Casa editrice</label>
+		<input type="text" id="txtEditrice" name="editrice" class="obbligatorio"
+			data-messaggio-errore="La casa editirce è obbligatoria" />
+	</div>	
+	<div>
+		<label>Anno di pubblicazione</label>
+		<input type="number" id="txtAnno" name="anno" />
+	</div>
+	<div>
+		<label>Genere</label>
+		<select id="selGenere" name="genere" class="obbligatorio"
+		data-messaggio-errore="Il genere è obbligatorio; selezionarlo dall'elenco">
+			<option value=""></option>
+			<option value="giallo">Giallo</option>
+			<option value="narrativa">Narrativa</option>
+			<option value="saggio">Saggio</option>
+			<option value="classico">Classico</option>
+			<option value="fumetti">Fumetti</option>
+		</select>
+	</div>
+	<div>
+		<label>Lingue</label>
+		IT <input type="checkbox" id="chkIT" name="lingue" value="it" />
+		EN <input type="checkbox" id="chkEN" name="lingue" value="en" />
+		FR <input type="checkbox" id="chkFR" name="lingue" value="fr" />
+		ES <input type="checkbox" id="chkES" name="lingue" value="es" />
+	</div>
+	<div>
+		<input type="button" id="btnConvalida" value="Convalida" />
+	</div>
+</form>
+<p id="messaggio"></p>
+<button id="mostraNascondiErrori" style="display:none;">Mostra errori</button>
+<ul id="errori" style="display:none;">
+</ul>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+	$(function() {
+		$('#btnConvalida').click(function(e){
+			e.preventDefault();
+			convalida();
+			visualizzaInformazioniForm();
+		});
+		$('#mostraNascondiErrori').click(function(){
+			if($('#errori').is(':visible')) {
+				$('#errori').hide(800);
+				$('#mostraNascondiErrori').html('Mostra errori');
+			} else {
+				$('#errori').show(800);
+				$('#mostraNascondiErrori').html('Nascondi errori');
+			}
+		});
+	});
+	function visualizzaInformazioniForm() {
+		$('#errori').html('');
+		if($('.nonValido').length > 0) {
+			$('#messaggio').html('Il form non è valido; controllare i campi contrassegnati.')
+			$('.nonValido').each(function(){
+				var msg = '<li>' + $(this).data('messaggio-errore') + '</li>';
+				$('#errori').append(msg);
+			});
+			$('#mostraNascondiErrori').show(200);
+		} else {
+			$('#messaggio').html('Il form è valido.');
+			$('#mostraNascondiErrori').hide(200);
+		}
+	}
+	function convalida() {
+		$('.obbligatorio').each(function(){
+			if($(this).val() == '') {
+				$(this).addClass('nonValido');
+			} else {
+				$(this).removeClass('nonValido');
+			}
+		});
+	}
+</script>
+</body>
+</html>

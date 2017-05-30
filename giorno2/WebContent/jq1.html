@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>jQuery 1</title>
+<style>
+	#par1 {
+		background-color: red;
+	}
+	.nonValido {
+		color: darkgreen;
+	}
+	.importante {
+		font-variant: small-caps;
+	}
+	form button :first-child {
+		border: 5px dotted red;
+	}
+</style>
+</head>
+<body>
+	<p id="par1" data-id="10">Paragrafo di testo</p>
+	<p class="importante">Altro paragrafo di testo</p>
+	<div>
+		<section>
+			<p>Paragrafo dentro a due DIV</p>
+		</section>
+		<p>Ancora un altro paragrafo</p>
+	</div>
+	<form>
+		Nome: <input type="text" name="nome"><br>
+		Cognome: <input type="text" name="cognome"><br>
+		Data di nascita: <input type="date" name="dataNascita">
+		Provincia :
+		<select name="provincia">
+			<option value="MI">Milano</option>
+			<option value="BG">Bergamo</option>
+			<option value="BO">Bologna</option>
+		</select>
+		<button>Vai!!</button>
+		<button id="btn">Non fare nulla</button>
+	</form>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+	console.log('js');
+ 	$(function() {
+ 		$('#btn').click(function(e){
+ 			// impedisco il submit
+ 			e.preventDefault();
+ 			
+ 			console.log($('input[name=nome]').val());
+ 			console.log($('select[name=provincia]').val());
+ 			console.log($('select[name=provincia] :selected').text());
+ 		});
+ 		
+ 		
+ 		console.log('DOM caricato completamente');
+ 		var pjs = document.getElementById('par1');
+ 		var pjq = $('#par1');
+ 		var pjq2 = $(pjs);
+ 		
+ 		// manipolazione
+ 		$('p').html('ciaoooooo');
+ 		$('div p').html('paragrafo modificato');
+ 		$('div > p').html('paragrafo modificato ........');
+ 		
+ 		$('.importante').attr('style', 'font-size:36px;');
+ 		$('.importante').attr('saluto', 'buongiorno');
+ 		// $('#par1').data('test', '10'); // sistemare
+ 		
+ 		// manipolazione classi
+ 		$('#par1').addClass('nonValido');
+ 		$('.importante').addClass('nonValido');
+ 		$('body > p').removeClass('importante');
+ 	});
+</script>
+
+<h1>Titolo</h1>
+<script>console.log('test 1');</script>
+</body>
+</html>

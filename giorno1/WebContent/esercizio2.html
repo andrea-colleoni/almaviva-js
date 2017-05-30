@@ -2,22 +2,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Esercizio - Schede persone</title>
 </head>
 <body>
 <div>
 	<div>
 		<label>Nome: </label>
-		<span id="nome"></span>
+		<span id="nome" class="autofill"></span>
 	</div>
 	<div>
 		<label>Cognome: </label>
-		<span id="cognome"></span>
+		<span id="cognome" class="autofill"></span>
 	</div>
 	<div>
 		<label>Indirizzo: </label>
-		<span id="via"></span> n. <span id="civico"></span>, <span id="cap"></span> <span id="citta"></span>
+		<span id="indirizzo.via" class="autofill"></span>
+		 n. <span id="indirizzo.civico" class="autofill"></span>, 
+		<span id="indirizzo.cap" class="autofill"></span>
+		 <span id="indirizzo.citta" class="autofill"></span>
 	</div>
+	<h1 id="numeroScarpe" class="autofill"></h1>
 </div>
 <div>
 	<button id="indietro">&lt;</button>
@@ -48,6 +52,7 @@
 	persone.push({
 		nome: 'Luisa',
 		cognome: 'Verdi',
+		numeroScarpe: 38,
 		indirizzo: {
 			via: 'via Dante',
 			civico: 21,
@@ -65,10 +70,28 @@
 	}
 	function displayPersona() {
 		if (persone[0]) {
+			/*
 			Object.getOwnPropertyNames(persone[0]).forEach(function(v){
 				var e = document.getElementById(v);
 				if (e)
 					e.innerHTML = persone[0][v];
+			});
+			*/
+			var elms = document.getElementsByClassName('autofill');
+			// trasforma HTMLCollection in Array e cicla sugli elementi autofill
+			[].slice.call(elms).forEach(function(element){
+				var props = element.id.split('.');
+				if(props.length==1) {
+					if(persone[0][props[0]])
+						element.innerHTML = persone[0][props[0]];
+					else element.innerHTML = '';
+				} else {
+					var valore = persone[0][props[0]];
+					for(i=1; i < props.length; i++) {
+						valore = valore[props[i]];
+					}
+					element.innerHTML = valore;
+				}
 			});
 		}
 	}

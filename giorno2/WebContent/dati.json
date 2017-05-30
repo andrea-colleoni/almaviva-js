@@ -1,0 +1,33 @@
+[
+	{
+		"nome": "Mario",
+		"cognome": "Rossi",
+		"indirizzo": {
+			"via": "via Roma",
+			"civico": 1,
+			"cap": "00100",
+			"citta": "Roma"
+		}
+	},
+	{
+		"nome": "Anna",
+		"cognome": "Bianchi",
+		"indirizzo": {
+			"via": "via Colombo",
+			"civico": 10,
+			"cap": "20100",
+			"citta": "Milano"
+		}
+	},
+	{
+		"nome": "Luisa",
+		"cognome": "Verdi",
+		"numeroScarpe": 38,
+		"indirizzo": {
+			"via": "via Dante",
+			"civico": 21,
+			"cap": "24100",
+			"citta": "Bergamo"
+		}
+	}
+]

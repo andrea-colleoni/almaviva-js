@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+</head>
+<body>
+<table id="persone"></table>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script>
+	$(function() {
+		$.ajax({
+			url: 'dati.json',
+			method: 'get' // post, put, head, options, delete...
+		})
+		.done(function(datiPersone){
+			$('#persone').DataTable({
+				data: datiPersone,
+				columns: [
+					{
+						title: 'Nome',
+						data: 'nome'
+					},{
+						title: 'Cognome',
+						data: 'cognome'
+					},{
+						title: 'Città',
+						data: 'indirizzo.citta'
+					}
+				]
+			});
+		})
+		.fail(function(err){
+			console.log(err);
+		});	
+	});
+	
+</script>
+</body>
+</html>

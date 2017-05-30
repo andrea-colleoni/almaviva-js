@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>AJAX</title>
+</head>
+<body>
+<div id="mioDiv"></div>
+<input type="text" id="indirizzo">
+<button id="btnCarica">Carica</button>
+
+<button id="btnCaricaDati">Carica i dati</button>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+	$(function() {
+		$('#btnCaricaDati').click(function(){
+			caricaDati();
+		});
+		$('#btnCarica').click(function() {
+			caricaParte()
+		});
+	});
+	
+	function caricaParte(){
+		$.ajax({
+			url: $('#indirizzo').val(),
+			method: 'get' // post, put, head, options, delete...
+		})
+		.done(function(risultato){
+			$('#mioDiv').html(risultato);
+		})
+	}
+	
+	function caricaDati() {
+		$.ajax({
+			url: 'dati.json',
+			method: 'get' // post, put, head, options, delete...
+		})
+		.done(function(risultato){
+			console.log(risultato);
+		})
+		.fail(function(err){
+			console.log(err);
+		});
+		console.log('finito? ');
+	}
+</script>
+</body>
+</html>
